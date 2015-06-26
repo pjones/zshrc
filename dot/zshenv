@@ -6,14 +6,12 @@ typeset -U path
 # Add some standard directories to PATH.
 [ -d ~/.cabal/bin ] && path=(~/.cabal/bin $path)
 
-# Another tool which updates my path...
-[ -r ~/local/paths ] && eval $(~/bin/local-paths.sh ~/local/paths)
-
 # Always keep ~/bin at the head of the list.
 path=(~/bin $path)
 
-# Load agent environment variables.
+# Load core environment variables.
 source ~/.zsh/lib/agents.zsh
+source ~/.zsh/lib/editor.zsh
 
 # Load in optional operating system override
 [ -r ~/.zsh/os ] && source ~/.zsh/os
