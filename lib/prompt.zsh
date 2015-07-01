@@ -31,7 +31,7 @@ if [ "x$INSIDE_SCRIPT" = "x" ]; then
       fi
 
       if [[ $branch == "master" && $color == "green" ]]; then
-        flags="${flags}%F{${color}}G"
+        flags="${flags}%F{${color}}✓"
       else
         prompt="${prompt}-%F{cyan}(%F{${color}}%12<..<$branch%<<%F{cyan})"
       fi
@@ -39,7 +39,7 @@ if [ "x$INSIDE_SCRIPT" = "x" ]; then
 
     # Maybe add info about the current nix-shell.
     if _nix-inside-shell; then
-      flags="${flags}%F{magenta}N"
+      flags="${flags}%F{magenta}∃"
     fi
 
     # Incorporate flags.
