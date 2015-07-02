@@ -42,26 +42,6 @@ if [ -d /etc/nix ]; then
     _nix-with-nixpkgs nix-build "$@"
   }
 
-  ##############################################################################
-  # Create a `default.nix` file for a Haskell project.
-  function nix-hs-derivation () {
-    nixpkgs-shell -p haskellPackages.cabal2nix \
-        --command "cabal2nix $PWD -fmaintainer $@ > default.nix"
-  }
-
-  ##############################################################################
-  function nix-hs-shell () {
-    nix-hs-derivation
-    override=~/.nixpkgs/envs/dev/haskell-cabal.nix
-    nixpkgs-shell -I pwd=$PWD --pure "$@" $override
-  }
-
-  ##############################################################################
-  # Build a Haskell project with the hsbuild.sh tool.
-  function nix-hs-build () {
-    nix-hs-shell --command  $(which hsbuild.sh) "$@"
-  }
-
 ################################################################################
 else
 
