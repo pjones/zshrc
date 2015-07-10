@@ -4,5 +4,6 @@ function x11vnc-projector () {
 
   x11vnc -clip "$projector" -viewonly \
          -forever -localhost -quiet \
-         -wirecopyrect -scrollcopyrect
+         -wirecopyrect -scrollcopyrect \
+         -scale 0.9
 }
