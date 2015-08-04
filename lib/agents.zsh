@@ -3,6 +3,9 @@ export SSH_AGENT_PID
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
 
+# Make sure everyone knows where gpg files are:
+export GNUPGHOME=$HOME/keys/gpg
+
 # Only load these files in an GUI session
 if [ -n "$DISPLAY" ]; then
 
