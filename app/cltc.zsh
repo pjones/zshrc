@@ -18,7 +18,7 @@ if [ `hostname` = "cltc" ]; then
 
     ( export DEV_ENV=$name
       cd $dir
-      nix-shell --command zsh ~/develop/scors/nix/${name}.nix
+      nix-shell --command zsh ~/.nixpkgs/envs/scors/${name}.nix
     )
   }
 
