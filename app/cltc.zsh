@@ -32,4 +32,9 @@ if [ `hostname` = "cltc" ]; then
     _cltc-app cltc-claims
   }
 
+  ##############################################################################
+  function cltc-flock {
+    _cltc-app cltc-flock
+  }
+
 fi
