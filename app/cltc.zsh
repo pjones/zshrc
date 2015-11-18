@@ -3,7 +3,7 @@ if [ `hostname` = "cltc" ]; then
   ##############################################################################
   function _cltc-app {
     name=$1
-    dir=$HOME/develop/scors/$name
+    dir=$HOME/scors/$name
 
     if [ -n "$shellHook" ]; then
       echo "ERROR: you're already inside nix-shell"
