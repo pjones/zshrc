@@ -1,12 +1,5 @@
 #!/usr/local/bin/zsh
 
-# Automatically start a tmux session for this shell.
-if which tmux > /dev/null 2>&1; then
-  if [ -z "$TMUX" -a -t 1 ]; then
-    exec tmux new-session -d $SHELL \; set status off \; attach
-  fi
-fi
-
 # keep some arrays unique
 typeset -U fpath
 typeset -U cdpath
