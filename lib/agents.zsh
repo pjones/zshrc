@@ -5,17 +5,5 @@ export GPG_AGENT_INFO
 
 # Make sure everyone knows where gpg files are:
 export GNUPGHOME=$HOME/keys/gpg
-
-# Only load these files in an GUI session
-if [ -n "$DISPLAY" ]; then
-
-  # Load SSH agent environment vars.
-  if [ -r ~/.ssh/agent ]; then
-      eval `cat ~/.ssh/agent | egrep -v ^echo`
-  fi
-
-  # Load GPG agent environment vars.
-  if [ -r ~/.gpg-agent-info ]; then
-      eval `cat ~/.gpg-agent-info`
-  fi
-fi
+export GPG_TTY=`tty`
+export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
