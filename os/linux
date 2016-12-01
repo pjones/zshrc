@@ -4,7 +4,8 @@
 # NixOS internally knows where to search for man pages.  Help zsh auto
 # complete on them.
 if [ -d ~/.nix-profile ]; then
-  MANPATH=`man -w`
+  export MANPATH=`man -w`
+  export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 fi
 
 ################################################################################
