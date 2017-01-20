@@ -15,7 +15,7 @@ function precmd() {
 
     xterm*|rxvt*)
       # The terminal seems to be smart enough:
-      PS1="%(?..%F{red}[%B%?%b%F{red}] %f)%F{magenta}❯%f "
+      PS1="%B%(?.%F{cyan}❯%f .%F{magenta}❯%f %b"
       RPROMPT="%F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
 
       # Make it easy to see when I'm in a nix-shell:
