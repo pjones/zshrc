@@ -1,10 +1,15 @@
 #!/usr/bin/env zsh
 
 ################################################################################
+# If it looks like I'm using a custom nixpkgs, then set up NIX_PATH:
+if [ -d $HOME/.nix-defexpr/channels/nixpkgs ]; then
+  export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
+fi
+
+################################################################################
 # NixOS internally knows where to search for man pages.  Help zsh auto
 # complete on them.
-if [ -d ~/.nix-profile ]; then
-  export MANPATH=`man -w`
+if [ -n "$NIX_PATH" ]; then
   export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 fi
 
