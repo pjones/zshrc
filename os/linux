@@ -3,14 +3,16 @@
 ################################################################################
 # If it looks like I'm using a custom nixpkgs, then set up NIX_PATH:
 if [ -d $HOME/.nix-defexpr/channels/nixpkgs ]; then
-  export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
+  NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
+  NIX_PATH=$NIX_PATH:nixconfig=$HOME/core/nixconfig
+  export NIX_PATH
 fi
 
 ################################################################################
 # NixOS internally knows where to search for man pages.  Help zsh auto
 # complete on them.
 if [ -n "$NIX_PATH" ]; then
-  export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
+  export MANPATH=`man -w`
 fi
 
 ################################################################################
