@@ -7,11 +7,11 @@ typeset -U path
 path=(~/bin $path)
 
 # Load core environment variables.
-source ~/.zsh/lib/agents.zsh
 source ~/.zsh/lib/editor.zsh
 
 # Other environment variables:
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+export GPG_TTY=`tty`
 
 # Load in optional operating system override
 [ -r ~/.zsh/os ] && source ~/.zsh/os
