@@ -13,7 +13,7 @@ function precmd() {
       printf "AnSiTu %s\n" ${USER:=`whoami`}
       ;& # fall through to the next case check...
 
-    xterm*|rxvt*)
+    xterm*|rxvt*|screen*)
       # The terminal seems to be smart enough:
       PS1="%(?.%F{cyan}❯%f .%F{magenta}❯%f "
       RPROMPT="%F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
