@@ -1,3 +1,5 @@
+#!zsh
+
 # Set our EDITOR
 if [ -x ~/bin/e ] && which emacsclient > /dev/null 2>&1; then
   export EDITOR="e --wait"

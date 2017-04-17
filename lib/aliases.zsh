@@ -1,3 +1,5 @@
+#!zsh
+
 # stuff for every os
 alias vared="IFS=\$'\n' vared"
 alias bc='bc -q'
@@ -50,12 +52,7 @@ if [[ $OSNAME == "Darwin" ]]; then
     alias ldd='otool -L'
 fi
 
-# More complicated aliases that need to be functions.
-dl () {dict "$@" | less}
-
 # Just to shorten typing
-alias tclock="tty-clock -c -C 4 -f '%b. %d, %Y'"
-alias scclock='env TZ=America/New_York tty-clock -C 0 -c -f "South Carolina"'
-alias iss_payload='chromium --app=http://www.ustream.tv/channel/iss-hdev-payload/pop-out'
-alias rtm='chromium --app=https://www.rememberthemilk.com'
 alias mrs='mr -d ~ status'
+alias gpg=gpg2
+alias virsh-vnc='vnc localhost $(expr 5900 + $(virsh vncdisplay $1|head -1|sed "s/^.*://"))'

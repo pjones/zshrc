@@ -1,8 +1,7 @@
 #!zsh
 
-#
-# change to a directory in the directory stack
-#
+################################################################################
+# Change to a directory in the directory stack
 
 typeset -a dlist
 dlist=(`dirs`)

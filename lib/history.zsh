@@ -1,3 +1,5 @@
+#!zsh
+
 # History stuff
 HISTSIZE=100
 SAVEHIST=100

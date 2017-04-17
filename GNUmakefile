@@ -1,32 +1,24 @@
 ################################################################################
-include ../mk/init.mk
-include ../mk/files.mk
+PREFIX ?= $(HOME)
 
 ################################################################################
-DEST = $(HOME)/.zsh
-HOST = $(shell hostname)
-OS   = $(shell uname -s | tr '[:upper:]' '[:lower:]')
+LIBS = $(shell find func lib os wids -type f)
+DOTS = $(shell find dot -type f)
 
 ################################################################################
-FILES  = $(wildcard lib/*.zsh)
-FILES += $(wildcard app/*.zsh)
-FILES += $(wildcard util/*.zsh)
-FILES += $(wildcard func/*)
-FILES += $(wildcard wids/*.zsh)
+.PHONEY: install
 
 ################################################################################
-$(foreach f,$(FILES),$(eval $(call PMADE_INSTALL_FILE,$(f),$(DEST)/$(f))))
-$(eval $(call PMADE_INSTALL_DOT,dot/zshrc))
-$(eval $(call PMADE_INSTALL_DOT,dot/zshenv))
+# $1: Source file.
+# $2: Destination name.
+define INSTALL_FILE
+install: $(PREFIX)/$(2)
+$(PREFIX)/$(2): $(1)
+	@ echo "==> $$@"
+	@ mkdir -p `dirname $$@`
+	@ sed "s|@prefix@|$(PREFIX)|g" < $$< > $$@
+endef
 
 ################################################################################
-# Local (hostname based) Override
-ifneq ($(wildcard local/$(HOSTNAME)),)
-  $(eval $(call PMADE_INSTALL_FILE,local/$(HOSTNAME),$(DEST)/local))
-endif
-
-################################################################################
-# OS (os name based) Override
-ifneq ($(wildcard os/$(OS)),)
-  $(eval $(call PMADE_INSTALL_FILE,os/$(OS),$(DEST)/os))
-endif
+$(foreach f,$(LIBS),$(eval $(call INSTALL_FILE,$(f),.zsh/$(f))))
+$(foreach f,$(DOTS),$(eval $(call INSTALL_FILE,$(f),.$(notdir $(f)))))

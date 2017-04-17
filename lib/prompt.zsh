@@ -1,3 +1,5 @@
+#!zsh
+
 # Prompt magic
 autoload -U colors; colors
 

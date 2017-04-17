@@ -1,22 +1,20 @@
-#!/usr/local/bin/zsh
+#!zsh
 
-####
-#
-# Help print out columns
-#
-####
+################################################################################
+# Given input on STDIN, print only column number $1.
 
+################################################################################
 if [ "$#" -eq 1 ]; then
-    awk "{print \$$1}"
+  cut -f $1
 else
-    read -A cols
-    read -t -k 1 && cat > /dev/null
+  read -A cols
+  read -t -k 1 && cat > /dev/null
 
-    echo 1 | \
+  echo 1 | \
     (
-	 PROMPT3=""
-	 select i in $cols; do
-	     break
-	 done
+      PROMPT3=""
+      select i in $cols; do
+        break
+      done
     )
 fi

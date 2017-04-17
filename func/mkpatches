@@ -1,9 +1,11 @@
-#!/usr/local/bin/zsh
+#!zsh
 
+################################################################################
+# Generate a patch set from files that end in .orig.
 for orig in `find . -name '*.orig'`; do
-    name=`echo $orig | sed 's/\.orig$//g'`
-    patch="$name.patch"
+  name=`echo $orig | sed 's/\.orig$//g'`
+  patch="$name.patch"
 
-    echo "$orig $name ==> $patch"
-    diff -u $orig $name > $patch
+  echo "$orig $name ==> $patch"
+  diff -u $orig $name > $patch
 done

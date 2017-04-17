@@ -1,3 +1,5 @@
+#!zsh
+
 # Keep unique
 typeset -U ssh_hosts
 

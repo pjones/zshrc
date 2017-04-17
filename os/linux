@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!zsh
 
 ################################################################################
 # If it looks like I'm using a custom nixpkgs, then set up NIX_PATH:

@@ -1,2 +1,2 @@
-#!/usr/bin/env zsh
+#!zsh
 path=(/sbin /usr/sbin /var/ruby/1.8/gem_home/bin $path)

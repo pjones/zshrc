@@ -1,3 +1,5 @@
+#!zsh
+
 # fix ^w
 export WORDCHARS="*?_-.[]~={}<>"
 autoload backward-kill-word-match select-word-style match-words-by-style

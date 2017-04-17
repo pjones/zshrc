@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!zsh
 
 # Correct path for Mac OS X
 path=(~/bin /usr/texbin /usr/local/bin $path)

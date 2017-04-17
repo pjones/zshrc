@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!zsh
 
 if [[ $1 == *.gz || $1 == *.tgz ]]; then
     gunzip -c $1 | tar xvf -
@@ -13,7 +13,7 @@ elif [[ $1 == *.zip ]]; then
     unzip $1
 
 elif [[ $1 == *.tar ]]; then
-    cat $1 | tar xvf -
+    tar xvf $1
 
 else
     echo "Unknow file type: $1"

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!zsh
 
 # Set default path
 typeset -U path
@@ -7,14 +7,12 @@ typeset -U path
 path=(~/bin $path)
 
 # Load core environment variables.
-source ~/.zsh/lib/editor.zsh
+source @prefix@/.zsh/lib/editor.zsh
 
 # Other environment variables:
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
-export GPG_TTY=`tty`
+export GPG_TTY=$(tty)
+export OS=$(uname -s | tr '[A-Z]' '[a-z]')
 
 # Load in optional operating system override
-[ -r ~/.zsh/os ] && source ~/.zsh/os
-
-# Load in optional local override file
-[ -r ~/.zsh/local ] && source ~/.zsh/local
+[ -r "@prefix@/.zsh/$OS" ] && source "@prefix@/.zsh/$OS"

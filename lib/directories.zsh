@@ -1,3 +1,5 @@
+#!zsh
+
 # Directory stuff
 DIRSTACKSIZE=16
 setopt auto_pushd
