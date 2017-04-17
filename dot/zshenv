@@ -15,4 +15,4 @@ export GPG_TTY=$(tty)
 export OS=$(uname -s | tr '[A-Z]' '[a-z]')
 
 # Load in optional operating system override
-[ -r "@prefix@/.zsh/$OS" ] && source "@prefix@/.zsh/$OS"
+[ -r "@prefix@/.zsh/os/$OS" ] && source "@prefix@/.zsh/os/$OS"
