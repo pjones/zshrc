@@ -10,13 +10,13 @@ alias f="find . -name"
 alias g="egrep"
 
 # ls command
-if [[ $OSNAME == "FreeBSD" || $OSNAME == "Darwin" ]]; then
+if [[ $OS == "freebsd" || $OS == "darwin" ]]; then
     alias ls='ls -G'
     alias l='ls -lFGh'
     alias ll='ls -lFGh'
     alias la='ls -lFGha'
 
-elif [[ $OSNAME == "Linux"  || $OSNAME == "CYGWIN_NT-5.0" ]]; then
+elif [[ $OS == "linux"  || $OS == "cygwin_nt-5.0" ]]; then
     alias ls='\ls --color=auto --group-directories-first'
     alias lsa='ls -A'
     alias l='\ls -lhF --color=auto --group-directories-first'
@@ -32,13 +32,13 @@ else
 fi
 
 # ps
-if [[ $OSNAME == "FreeBSD" ]]; then
+if [[ $OS == "freebsd" ]]; then
     alias p='ps -axwwopid,ppid,user,pcpu,vsz,rss,comm,args'
-elif [[ $OSNAME == "Darwin" ]]; then
+elif [[ $OS == "darwin" ]]; then
     alias p='ps -axwwopid,ppid,user,pcpu,vsz,rss,command'
-elif [[ $OSNAME == "Linux"  || $OSNAME == "CYGWIN_NT-5.0" ]]; then
+elif [[ $OS == "linux"  || $OS == "cygwin_nt-5.0" ]]; then
     alias p='ps -ewwopid,ppid,user,pcpu,vsz,rss,comm,args'
-elif [[ $OSNAME == "AIX" || $OSNAME == "HP-UX" ]]; then
+elif [[ $OS == "aix" || $OS == "hp-UX" ]]; then
     alias p='ps -eopid,ppid,user,pcpu,vsz,comm,args'
 else
     alias p='ps -eopid,ppid,user,pcpu,vsz,rss,comm,args'
@@ -48,7 +48,7 @@ fi
 alias pg="p|g"
 
 # ldd
-if [[ $OSNAME == "Darwin" ]]; then
+if [[ $OS == "darwin" ]]; then
     alias ldd='otool -L'
 fi
 
