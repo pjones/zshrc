@@ -49,4 +49,5 @@ source @prefix@/.zsh/lib/hosts.zsh
 source @prefix@/.zsh/lib/completion.zsh
 source @prefix@/.zsh/lib/directories.zsh
 source @prefix@/.zsh/lib/history.zsh
+source @prefix@/.zsh/lib/syntax.zsh
 source @prefix@/.zsh/lib/prompt.zsh
