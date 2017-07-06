@@ -13,18 +13,24 @@ for widget in last-cmd-as-expansion; do
     zle -N $widget
 done
 
-# default key binding is emacs
+# default key binding is Emacs:
 bindkey -e
 
-# Edit command lines in EDITOR.
+# Edit command lines in EDITOR:
 autoload edit-command-line
 zle -N edit-command-line
 
+# Smart inserting of previous words:
+autoload copy-earlier-word
+zle -N copy-earlier-word
+
 # Insert some custom keybindings
-bindkey -e ^xe edit-command-line
-bindkey -e ^xp push-line-or-edit
-bindkey -e ^xh run-help
-bindkey -e ^r  history-incremental-search-backward
-bindkey -e ^w  backward-kill-word-match
-bindkey -e ^o  last-cmd-as-expansion
-bindkey -e ^i  expand-or-complete-prefix
+bindkey -e '^x^e' edit-command-line
+bindkey -e '^x^p' push-line-or-edit
+bindkey -e '^x^h' run-help
+bindkey -e '^x^i' last-cmd-as-expansion
+bindkey -e '^r'   history-incremental-search-backward
+bindkey -e '^w'   backward-kill-word-match
+bindkey -e '^i'   expand-or-complete-prefix
+bindkey -e '^[_'  insert-last-word
+bindkey -e '^[-'  copy-earlier-word
