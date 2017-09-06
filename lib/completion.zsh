@@ -20,7 +20,3 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 # Enable better completion:
 autoload -U compinit; compinit
 zstyle ':completion:*' menu select
-
-# A fuzzy matcher, sort of:
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:approximate:*' max-errors 5 numeric
