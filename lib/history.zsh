@@ -3,7 +3,6 @@
 # History stuff
 HISTSIZE=100
 SAVEHIST=100
-HISTFILE=~/.zsh/history
 setopt append_history
 setopt inc_append_history
 setopt extended_history
