@@ -5,7 +5,7 @@ autoload -U colors; colors
 
 function precmd() {
   PS1="$ "
-  RPROMPT=""
+  top_prompt=""
 
   case "$TERM" in
     eterm*)
@@ -17,13 +17,16 @@ function precmd() {
 
     xterm*|rxvt*|screen*)
       # The terminal seems to be smart enough:
-      PS1="%(?.%F{cyan}❯%f .%F{magenta}❯%f "
-      RPROMPT="%F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
-
       # Make it easy to see when I'm in a nix-shell:
+      top_prompt="%F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
+
       if [[ -n "$NIX_BUILD_TOP" ]]; then
-        RPROMPT="%F{red}[%f$RPROMPT%F{red}]%f"
+        top_prompt="%F{red}╒ %f$top_prompt%F{red} ══%f"
+      else
+        top_prompt="%F{red}╭ %f$top_prompt%F{red} ──%f"
       fi
+
+      PS1="$top_prompt"$'\n'"%F{red}│ %f%(?.%F{cyan}❯%f .%F{magenta}❯%f "
       ;;
   esac
 }
