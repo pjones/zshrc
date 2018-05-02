@@ -5,6 +5,7 @@ autoload -U colors; colors
 
 function precmd() {
   PS1="$ "
+  RPROMPT=""
   top_prompt=""
 
   case "$TERM" in
