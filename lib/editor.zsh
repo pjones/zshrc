@@ -1,10 +1,10 @@
 #!zsh
 
 # Set our EDITOR
-if [ -x ~/bin/e ] && which emacsclient > /dev/null 2>&1; then
-  export EDITOR="e --wait"
-elif which emacsclient > /dev/null 2>&1; then
-  export EDITOR="emacsclient"
+if which emacsclient > /dev/null 2>&1 && which e > /dev/null; then
+  export EDITOR="e"
+elif which emacs > /dev/null 2>&1; then
+  export EDITOR="emacs -nw"
 elif which vim > /dev/null 2>&1; then
   export EDITOR=vim
 else
