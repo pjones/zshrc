@@ -4,11 +4,17 @@
 autoload -U colors; colors
 
 function precmd() {
-  PS1="$ "
-  RPROMPT=""
-  top_prompt=""
+  PS1='$ '
+  RPROMPT=''
+  top_prompt=''
 
   case "$TERM" in
+    dumb)
+      unsetopt zle
+      unsetopt prompt_cr
+      unsetopt prompt_subst
+      ;;
+
     eterm*)
       # Tell the Emacs terminal where/who we are:
       printf "AnSiTc %s\n" ${PWD:=`pwd`}
