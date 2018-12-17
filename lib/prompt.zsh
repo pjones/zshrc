@@ -11,12 +11,24 @@ zstyle ':vcs_info:*' unstagedstr '%F{red}:U%f'
 zstyle ':vcs_info:*' stagedstr '%F{green}:S%f'
 zstyle ':vcs_info:*' check-for-changes true
 
+function emacs_send_directory_details() {
+  if [ -n "$INSIDE_EMACS" ]; then
+    # Tell the Emacs terminal where/who we are:
+    printf "AnSiTc %s\n" ${PWD:=$(pwd)}
+    printf "AnSiTh %s\n" ${HOST:=$(hostname)}
+    printf "AnSiTu %s\n" ${USER:=$(whoami)}
+  fi
+}
+
 function precmd() {
   PS1='$ '
   RPROMPT=''
   top_prompt=''
   info_prompt=''
   prompt_symbol='❯'
+
+  # Where are we?
+  emacs_send_directory_details
 
   # Gather VSC info:
   vcs_info
@@ -28,14 +40,7 @@ function precmd() {
       unsetopt prompt_subst
       ;;
 
-    eterm*)
-      # Tell the Emacs terminal where/who we are:
-      printf "AnSiTc %s\n" ${PWD:=$(pwd)}
-      printf "AnSiTh %s\n" ${HOST:=$(hostname)}
-      printf "AnSiTu %s\n" ${USER:=$(whoami)}
-      ;& # fall through to the next case check...
-
-    xterm*|rxvt*|screen*)
+    xterm*|rxvt*|screen*|eterm*)
       # The terminal seems to be smart enough:
       top_prompt="%F{red}╭ %F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
 
