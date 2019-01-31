@@ -6,7 +6,7 @@ LIBS = $(shell find func lib os wids -type f)
 DOTS = $(shell find dot -type f)
 
 ################################################################################
-.PHONEY: install
+.PHONEY: install uninstall
 
 ################################################################################
 # $1: Source file.
@@ -22,3 +22,7 @@ endef
 ################################################################################
 $(foreach f,$(LIBS),$(eval $(call INSTALL_FILE,$(f),.zsh/$(f))))
 $(foreach f,$(DOTS),$(eval $(call INSTALL_FILE,$(f),.$(notdir $(f)))))
+
+################################################################################
+uninstall:
+	rm -rf $(PREFIX)/.zsh $(PREFIX)/.zshenv $(PREFIX)/.zshrc
