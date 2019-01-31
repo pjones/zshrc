@@ -8,6 +8,7 @@ alias h='history -fdD'
 alias j='jobs -l'
 alias f="find . -name"
 alias g="egrep"
+alias df="df -hP"
 
 # ls command
 if [[ $OS == "freebsd" || $OS == "darwin" ]]; then
@@ -22,8 +23,6 @@ elif [[ $OS == "linux"  || $OS == "cygwin_nt-5.0" ]]; then
     alias l='\ls -lhF --color=auto --group-directories-first'
     alias ll='l'
     alias la='l -A'
-    alias _df_awk="awk '{print \$2 \"\\t\" \$4 \"\\t\" \$5 \"\\t\" \$6}'"
-    alias df="df -hP|_df_awk"
 else
     alias l='ls -lF'
     alias ll='ls -lF'
