@@ -1,5 +1,6 @@
 ################################################################################
 PREFIX ?= $(HOME)
+DOT    ?= .
 
 ################################################################################
 LIBS = $(shell find func lib os wids -type f)
@@ -20,9 +21,9 @@ $(PREFIX)/$(2): $(1)
 endef
 
 ################################################################################
-$(foreach f,$(LIBS),$(eval $(call INSTALL_FILE,$(f),.zsh/$(f))))
-$(foreach f,$(DOTS),$(eval $(call INSTALL_FILE,$(f),.$(notdir $(f)))))
+$(foreach f,$(LIBS),$(eval $(call INSTALL_FILE,$(f),$(DOT)zsh/$(f))))
+$(foreach f,$(DOTS),$(eval $(call INSTALL_FILE,$(f),$(DOT)$(notdir $(f)))))
 
 ################################################################################
 uninstall:
-	rm -rf $(PREFIX)/.zsh $(PREFIX)/.zshenv $(PREFIX)/.zshrc
+	rm -rf $(PREFIX)/$(DOT)zsh $(PREFIX)/$(DOT)zshenv $(PREFIX)/$(DOT)zshrc
