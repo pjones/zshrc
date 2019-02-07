@@ -17,7 +17,7 @@ install: $(PREFIX)/$(2)
 $(PREFIX)/$(2): $(1)
 	@ echo "==> $$@"
 	@ mkdir -p `dirname $$@`
-	@ sed "s|@prefix@|$(PREFIX)|g" < $$< > $$@
+	@ sed "s|@prefix@|$(PREFIX)/$(DOT)|g" < $$< > $$@
 endef
 
 ################################################################################

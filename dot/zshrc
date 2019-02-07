@@ -10,8 +10,8 @@ export LESS="-SRiJMW"
 export PAGER=less
 
 # add our function path
-functions_directory=@prefix@/.zsh/func
-widgets_directory=@prefix@/.zsh/wids
+functions_directory=@prefix@zsh/func
+widgets_directory=@prefix@zsh/wids
 fpath=($functions_directory $widgets_directory $fpath)
 
 # clober stuff
@@ -43,11 +43,11 @@ autoload -U ${fpath[1]}/*(:t)
 zmodload zsh/datetime
 
 # bring in other files
-source @prefix@/.zsh/lib/bindings.zsh
-source @prefix@/.zsh/lib/aliases.zsh
-source @prefix@/.zsh/lib/hosts.zsh
-source @prefix@/.zsh/lib/completion.zsh
-source @prefix@/.zsh/lib/directories.zsh
-source @prefix@/.zsh/lib/history.zsh
-source @prefix@/.zsh/lib/syntax.zsh
-source @prefix@/.zsh/lib/prompt.zsh
+source @prefix@zsh/lib/bindings.zsh
+source @prefix@zsh/lib/aliases.zsh
+source @prefix@zsh/lib/hosts.zsh
+source @prefix@zsh/lib/completion.zsh
+source @prefix@zsh/lib/directories.zsh
+source @prefix@zsh/lib/history.zsh
+source @prefix@zsh/lib/syntax.zsh
+source @prefix@zsh/lib/prompt.zsh
