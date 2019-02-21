@@ -53,5 +53,4 @@ fi
 
 # Just to shorten typing
 alias mrs='mr -d ~ status'
-alias gpg=gpg2
-alias virsh-vnc='vnc localhost $(expr 5900 + $(virsh vncdisplay $1|head -1|sed "s/^.*://"))'
+alias nix-unstable='nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/tarball/nixpkgs-unstable'
