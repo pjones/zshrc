@@ -43,16 +43,20 @@ autoload copy-earlier-word
 zle -N copy-earlier-word
 
 # Insert some custom keybindings
-bindkey '^b'   backward-char
-bindkey '^f'   forward-char
-bindkey '^i'   expand-or-complete-prefix
-bindkey '^n'   down-history
-bindkey '^p'   up-history
-bindkey '^r'   history-incremental-search-backward
-bindkey '^w'   backward-kill-word-match
-bindkey '^x-'  copy-earlier-word
-bindkey '^x^e' edit-command-line
-bindkey '^x^h' run-help
-bindkey '^x^i' last-cmd-as-expansion
-bindkey '^x^p' push-line-or-edit
-bindkey '^x_'  insert-last-word
+bindkey '^[e' edit-command-line
+bindkey '^[h' run-help
+bindkey '^[i' last-cmd-as-expansion
+bindkey '^[j' down-history
+bindkey '^[k' up-history
+bindkey '^[l' insert-last-word
+bindkey '^[p' push-line-or-edit
+bindkey '^[w' copy-earlier-word
+bindkey '^a'  beginning-of-line
+bindkey '^b'  backward-char
+bindkey '^e'  end-of-line
+bindkey '^f'  forward-char
+bindkey '^i'  expand-or-complete-prefix
+bindkey '^n'  down-history
+bindkey '^p'  up-history
+bindkey '^r'  history-incremental-search-backward
+bindkey '^w'  backward-kill-word-match
