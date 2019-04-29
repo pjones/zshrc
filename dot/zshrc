@@ -51,3 +51,7 @@ source @prefix@zsh/lib/directories.zsh
 source @prefix@zsh/lib/history.zsh
 source @prefix@zsh/lib/syntax.zsh
 source @prefix@zsh/lib/prompt.zsh
+
+if which direnv > /dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
