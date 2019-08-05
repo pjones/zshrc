@@ -43,7 +43,9 @@ autoload copy-earlier-word
 zle -N copy-earlier-word
 
 # Insert some custom keybindings
+bindkey '^[b' backward-word
 bindkey '^[e' edit-command-line
+bindkey '^[f' forward-word
 bindkey '^[h' run-help
 bindkey '^[i' last-cmd-as-expansion
 bindkey '^[j' down-history
@@ -54,8 +56,10 @@ bindkey '^[w' copy-earlier-word
 bindkey '^a'  beginning-of-line
 bindkey '^b'  backward-char
 bindkey '^e'  end-of-line
+bindkey '^d'  delete-char-or-list
 bindkey '^f'  forward-char
 bindkey '^i'  expand-or-complete-prefix
+bindkey '^k'  kill-whole-line
 bindkey '^n'  down-history
 bindkey '^p'  up-history
 bindkey '^r'  history-incremental-search-backward
