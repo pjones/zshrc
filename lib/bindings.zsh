@@ -59,7 +59,7 @@ bindkey '^e'  end-of-line
 bindkey '^d'  delete-char-or-list
 bindkey '^f'  forward-char
 bindkey '^i'  expand-or-complete-prefix
-bindkey '^k'  kill-whole-line
+bindkey '^k'  kill-line
 bindkey '^n'  down-history
 bindkey '^p'  up-history
 bindkey '^r'  history-incremental-search-backward
