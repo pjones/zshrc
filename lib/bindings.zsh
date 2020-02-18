@@ -64,3 +64,6 @@ bindkey '^n'  down-history
 bindkey '^p'  up-history
 bindkey '^r'  history-incremental-search-backward
 bindkey '^w'  backward-kill-word-match
+
+# Make zsh process the escape key much faster
+export KEYTIMEOUT=1
