@@ -13,26 +13,8 @@ for widget in last-cmd-as-expansion; do
   zle -N $widget
 done
 
-# default key binding is vi:
-bindkey -v
-
-# Indicate which vi mode you're in:
-function zle-keymap-select {
-  case $KEYMAP in
-    vicmd)
-      vi_mode="%K{yellow}%F{black} <N> %f%k"
-      ;;
-
-    *)
-      vi_mode=""
-      ;;
-  esac
-
-  RPROMPT="$vi_mode"
-  zle reset-prompt
-}
-
-zle -N zle-keymap-select
+# default key binding is emacs:
+bindkey -e
 
 # Edit command lines in EDITOR:
 autoload edit-command-line
@@ -43,27 +25,16 @@ autoload copy-earlier-word
 zle -N copy-earlier-word
 
 # Insert some custom keybindings
-bindkey '^[b' backward-word
-bindkey '^[e' edit-command-line
-bindkey '^[f' forward-word
+bindkey '^[e' end-of-buffer-or-history
 bindkey '^[h' run-help
 bindkey '^[i' last-cmd-as-expansion
-bindkey '^[j' down-history
-bindkey '^[k' up-history
 bindkey '^[l' insert-last-word
 bindkey '^[p' push-line-or-edit
 bindkey '^[w' copy-earlier-word
-bindkey '^a'  beginning-of-line
-bindkey '^b'  backward-char
-bindkey '^e'  end-of-line
-bindkey '^d'  delete-char-or-list
-bindkey '^f'  forward-char
-bindkey '^i'  expand-or-complete-prefix
-bindkey '^k'  kill-line
-bindkey '^n'  down-history
-bindkey '^p'  up-history
-bindkey '^r'  history-incremental-search-backward
-bindkey '^w'  backward-kill-word-match
-
-# Make zsh process the escape key much faster
-export KEYTIMEOUT=1
+bindkey '^i' expand-or-complete-prefix
+bindkey '^n' down-history
+bindkey '^p' up-history
+bindkey '^r' history-incremental-search-backward
+bindkey '^t' edit-command-line
+bindkey '^u' kill-whole-line
+bindkey '^w' backward-kill-word-match
