@@ -3,9 +3,6 @@
 # Set default path
 typeset -U path
 
-# Always keep ~/bin at the head of the list.
-path=(~/bin $path)
-
 # Load core environment variables.
 source @prefix@zsh/lib/editor.zsh
 
