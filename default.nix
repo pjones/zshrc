@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> { }
+let
+  sources = import nix/sources.nix;
+in
+{ pkgs ? import sources.nixpkgs { }
 }:
 
 pkgs.stdenvNoCC.mkDerivation {
@@ -8,6 +11,11 @@ pkgs.stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/zshrc
-    make PREFIX=$out/share/zshrc DOT= install
+
+    make \
+      DOT= \
+      PREFIX=$out/share/zshrc \
+      FZFTAB=${pkgs.zsh-fzf-tab} \
+      install
   '';
 }
