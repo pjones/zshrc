@@ -15,7 +15,6 @@ pkgs.stdenvNoCC.mkDerivation {
     make \
       DOT= \
       PREFIX=$out/share/zshrc \
-      FZFTAB=${pkgs.zsh-fzf-tab} \
       install
   '';
 }
