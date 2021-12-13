@@ -1,20 +1,14 @@
-let
-  sources = import nix/sources.nix;
-in
-{ pkgs ? import sources.nixpkgs { }
+{ pkgs ? import <nixpkgs> { }
 }:
 
 pkgs.stdenvNoCC.mkDerivation {
   name = "zshrc";
-  phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
   src = ./.;
 
-  installPhase = ''
-    mkdir -p $out/share/zshrc
+  enableParallelBuilding = true;
 
-    make \
-      DOT= \
-      PREFIX=$out/share/zshrc \
-      install
-  '';
+  makeFlags = [
+    "PREFIX=$(out)/share/zshrc"
+    "DOT="
+  ];
 }
