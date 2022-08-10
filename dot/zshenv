@@ -8,7 +8,6 @@ source @prefix@zsh/lib/editor.zsh
 
 # Other environment variables:
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
-export GPG_TTY=$(tty)
 export OS=$(uname -s | tr '[A-Z]' '[a-z]')
 
 # Load in optional operating system override
