@@ -30,13 +30,12 @@ vterm_printf() {
   fi
 }
 vterm_prompt_end() {
-  vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+  vterm_printf "51;A$(whoami)@$(hostname -f):$(pwd)"
 }
 vterm_title() {
   print -Pn "\e]2;%m:%2~\a"
 }
-add-zsh-hook -Uz chpwd vterm_title
-vterm_title # Call now to set initial title.
+add-zsh-hook -Uz precmd vterm_title
 
 function precmd() {
   PS1='$ '
