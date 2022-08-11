@@ -3,18 +3,18 @@
 # Prompt magic
 autoload -U add-zsh-hook
 autoload -U colors
+autoload -Uz vcs_info
 colors
 
 setopt PROMPT_SUBST
 
 # Version control details (optional):
-if [ -n "$ZSH_SHOW_VCS" ]; then
-  zstyle ':vcs_info:*' actionformats '%F{cyan}%b %F{red}→ %a%f'
-  zstyle ':vcs_info:*' formats '%F{cyan}%b%u%c%f'
-  zstyle ':vcs_info:*' unstagedstr '%F{red}:U%f'
-  zstyle ':vcs_info:*' stagedstr '%F{green}:S%f'
-  zstyle ':vcs_info:*' check-for-changes true
-fi
+zstyle ':vcs_info:*' actionformats '%F{cyan}%b %F{red}→ %a%f'
+zstyle ':vcs_info:*' formats '%F{cyan}%b%f:%F{yellow}%0.7i%f:%u%c'
+zstyle ':vcs_info:*' unstagedstr '%F{red}M%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}M%f'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
 
 # https://github.com/akermu/emacs-libvterm
 vterm_printf() {
@@ -55,11 +55,11 @@ function precmd() {
     # The terminal seems to be smart enough:
     top_prompt="%F{red}[ %F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
 
-    if [ -n "$ZSH_SHOW_VCS" ]; then
+    if [ "${ZSH_SHOW_VCS:-1}" -eq 1 ]; then
       vcs_info
 
       if [ -n "${vcs_info_msg_0_}" ]; then
-        info_prompt="${info_prompt}${vcs_info_msg_0_} "
+        info_prompt="${info_prompt}${vcs_info_msg_0_/%:/} "
       fi
     fi
 
