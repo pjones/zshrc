@@ -51,7 +51,7 @@ function precmd() {
     unsetopt prompt_subst
     ;;
 
-  xterm* | rxvt* | screen* | eterm*)
+  xterm* | rxvt* | screen* | tmux* | eterm*)
     # The terminal seems to be smart enough:
     top_prompt="%F{red}[ %F{blue}%n%F{red}@%F{green}%m:%F{yellow}%20<..<%2~%<<%f"
 
