@@ -1,7 +1,7 @@
-{ pkgs ? import <nixpkgs> { }
+{ stdenvNoCC
 }:
 
-pkgs.stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation {
   name = "zshrc";
   src = ./.;
 

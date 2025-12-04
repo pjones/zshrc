@@ -2,7 +2,7 @@
   description = "Peter's ZSH configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   };
 
   outputs = { self, nixpkgs, ... }:
@@ -11,23 +11,21 @@
       supportedSystems = nixpkgs.lib.platforms.unix;
 
       # Function to generate a set based on supported systems:
-      forAllSystems = f:
-        nixpkgs.lib.genAttrs supportedSystems (system: f system);
-
-      # Attribute set of nixpkgs for each system:
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
+      each = f:
+        nixpkgs.lib.genAttrs supportedSystems (system:
+          let pkgs = import nixpkgs { inherit system; };
+          in f pkgs system);
     in
     {
-      packages = forAllSystems (system: {
-        zshrc = import ./. { pkgs = nixpkgsFor.${system}; };
+      packages = each (pkgs: system: {
+        default = self.packages.${system}.zshrc;
+        zshrc = pkgs.callPackage ./. { };
       });
 
-      defaultPackage =
-        forAllSystems (system: self.packages.${system}.zshrc);
-
-      overlay = final: prev: {
-        pjones = (prev.pjones or { }) //
-          { zshrc = self.packages.${prev.system}.zshrc; };
+      overlays.default = final: prev: {
+        pjones = (prev.pjones or { }) // {
+          zshrc = self.packages.${prev.stdenv.hostPlatform.system}.zshrc;
+        };
       };
     };
 }
